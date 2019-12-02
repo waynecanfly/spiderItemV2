@@ -1,0 +1,26 @@
+{
+  "country": {
+    "china": {
+      "update": {
+        "SSE": [
+          "公司代码", "股票代码", "可转债简称", "可转债代码", "公司简称中文", "公司简称英文",
+          "公司全称中文", "公司全称英文", "注册地址", "通讯地址", "邮编", "法定代表人",
+          "E-mail", "联系电话", "网址", "CSRC行业(门类/大类/中类)", "SSE行业", "所属省/直辖市",
+          "状态", "是否上证180样本股", "是否境外上市", "境外上市地", "市场类型", "董事会秘书姓名",
+          "上市日*1", "上市日*2"
+      ],
+        "SZSE": [
+          "B股代码", "A股代码", "A股上市日期", "B股总股本", "所属行业", "注册地址",
+          "英文全称", "A股总股本", "省份", "A股流通股本", "公司全称", "B股简称",
+          "B股流通股本", "A股简称", "城市", "B股上市日期", "公司网址", "地区"
+        ]
+      }
+
+    },
+    "hongkong": {
+      "update": ["chairman", "company_name", "company_short_name", "financial_year_name", "industry", "isin",
+        "issued_shares", "listing_category", "listing_date", "market", "place_of_incorporation", "principal_office",
+        "registrar", "stock_code"]
+    }
+  }
+}
