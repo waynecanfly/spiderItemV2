@@ -55,3 +55,36 @@
 2019-12-12 10:12:57 [scrapy.core.downloader.handlers.http11] WARNING: Expected response size (61969850) larger than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2009/0319/ltn20090319097.pdf>.
 2019-12-12 10:13:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
 2019-12-12 10:14:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-12-12 10:15:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-12-12 10:15:56 [scrapy.core.downloader.handlers.http11] WARNING: Expected response size (108428406) larger than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2012/0320/ltn20120320390.pdf>.
+2019-12-12 10:15:57 [scrapy.core.downloader.handlers.http11] WARNING: Expected response size (61969850) larger than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2009/0319/ltn20090319097.pdf>.
+2019-12-12 10:15:58 [scrapy.core.downloader.handlers.http11] WARNING: Expected response size (58808982) larger than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2011/0329/ltn20110329458.pdf>.
+2019-12-12 10:16:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-12-12 10:17:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-12-12 10:18:38 [scrapy.core.downloader.handlers.http11] WARNING: Got data loss in https://www1.hkexnews.hk/listedco/listconews/sehk/2009/0319/ltn20090319097.pdf. If you want to process broken responses set the setting DOWNLOAD_FAIL_ON_DATALOSS = False -- This message won't be shown in further requests
+2019-12-12 10:18:38 [scrapy.core.downloader.handlers.http11] WARNING: Got data loss in https://www1.hkexnews.hk/listedco/listconews/sehk/2012/0320/ltn20120320390.pdf. If you want to process broken responses set the setting DOWNLOAD_FAIL_ON_DATALOSS = False -- This message won't be shown in further requests
+2019-12-12 10:18:38 [HKEX_headline_file_download_spider] INFO: 未成功下载 HKG10496610977020...
+2019-12-12 10:18:38 [HKEX_headline_file_download_spider] INFO: 未成功下载 HKG10496676113032...
+2019-12-12 10:18:38 [scrapy.core.downloader.handlers.http11] WARNING: Got data loss in https://www1.hkexnews.hk/listedco/listconews/sehk/2011/0329/ltn20110329458.pdf. If you want to process broken responses set the setting DOWNLOAD_FAIL_ON_DATALOSS = False -- This message won't be shown in further requests
+2019-12-12 10:18:38 [HKEX_headline_file_download_spider] INFO: 未成功下载 HKG10496681808663...
+2019-12-12 10:18:38 [scrapy.core.engine] INFO: Closing spider (finished)
+2019-12-12 10:18:38 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/exception_count': 15,
+ 'downloader/exception_type_count/twisted.internet.error.TimeoutError': 12,
+ 'downloader/exception_type_count/twisted.web._newclient.ResponseFailed': 3,
+ 'downloader/request_bytes': 5820,
+ 'downloader/request_count': 15,
+ 'downloader/request_method_count/GET': 15,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2019, 12, 12, 2, 18, 38, 543416),
+ 'log_count/INFO': 26,
+ 'log_count/WARNING': 20,
+ 'retry/count': 6,
+ 'retry/max_reached': 9,
+ 'retry/reason_count/twisted.internet.error.TimeoutError': 6,
+ 'scheduler/dequeued': 15,
+ 'scheduler/dequeued/memory': 15,
+ 'scheduler/enqueued': 15,
+ 'scheduler/enqueued/memory': 15,
+ 'start_time': datetime.datetime(2019, 12, 12, 2, 3, 56, 117323)}
+2019-12-12 10:18:38 [scrapy.core.engine] INFO: Spider closed (finished)
