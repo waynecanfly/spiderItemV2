@@ -14,7 +14,7 @@ class HkexDelistedCompanyListSpider(scrapy.Spider):
     allowed_domains = ['webb-site.com']
     start_urls = ['http://webb-site.com/']
     market_url_dict = {
-        # 'main': 'https://webb-site.com/dbpub/delisted.asp?s=nameup&t=s&e=m',
+        'main': 'https://webb-site.com/dbpub/delisted.asp?s=nameup&t=s&e=m',
         'gem': 'https://webb-site.com/dbpub/delisted.asp?s=nameup&t=s&e=g'
     }
 
@@ -40,6 +40,7 @@ class HkexDelistedCompanyListSpider(scrapy.Spider):
             delisted_date = info.xpath("./td[7]/text()").extract()
             trading_life_years = info.xpath("./td[8]/text()").extract()
             reason = info.xpath("./td[9]/text()").extract()
+            # 以下代码重复严重，可以重写
             if len(stock_code) == 0:
                 stock_code = 'Null'
             else:

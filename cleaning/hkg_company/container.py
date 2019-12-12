@@ -41,8 +41,10 @@ class Company:
         self.website_url = ''
         # 公司信息下载地址
         self.download_link = ''
-        # 证券列表
-        # self.security_box = []
+        # 注册地址
+        self.registered_address = ''
+        # 办公地址
+        self.office_address = ''
 
 
 class Security:

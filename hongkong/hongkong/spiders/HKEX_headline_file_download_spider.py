@@ -39,23 +39,13 @@ class HkexFileDownloadSpiderSpider(scrapy.Spider):
     # ]
 
 
-    # url = 'http://ip.filefab.com/index.php'
-    # def start_requests(self):
-    #     yield scrapy.Request(url=self.url,callback=self.parse
-    #     )
-    #
-    # def parse(self, response):
-    #     ip = response.xpath("//div[@id='wrapper']/div[@class='maindivm']/div[@class='notediv']/h1/span/text()").extract_first()
-    #     print('你的ip是：'+ str(ip))
-
-
     def start_requests(self):
         '''下载香港文件表中为pdf类型的文件'''
         conn = pymysql.connect(host="10.100.4.99", port=3306, db="opd_common", user="root", passwd="OPDATA",
                                charset="utf8")
         cursor = conn.cursor()
-        sql = "select doc_source_url, report_id, doc_type from financial_origin_began_complete20191101_copy1_copy1 where " \
-              "source_category='headine category' and is_downloaded='0' and country_code='HKG'"
+        sql = "select doc_source_url, report_id, doc_type, disclosure_date from financial_origin_began_complete_hkg2019124_copy1 " \
+              "where is_downloaded='0' and source_category='headline category' and country_code='HKG'"
         cursor.execute(sql)
         results = cursor.fetchall()
         # if results:
@@ -63,13 +53,15 @@ class HkexFileDownloadSpiderSpider(scrapy.Spider):
             doc_source_url = res[0]
             report_id = res[1]
             doc_type = res[2]
+            disclosure_date = res[3]
             item = HongKongFileItem()
-            yield scrapy.FormRequest(method='GET', url=doc_source_url, callback=self.parse,errback=self.errback_scraping,
+            yield scrapy.FormRequest(method='GET', url=doc_source_url, callback=self.parse, errback=self.errback_scraping,
                 meta={
                 'doc_source_url': doc_source_url,
                 'report_id': report_id,
                 'doc_type': doc_type,
                 'item': item,
+                'disclosure_date': disclosure_date
                 # 'proxy': 'http://' + random.choice(self.ip_list)
 
             })
@@ -78,11 +70,15 @@ class HkexFileDownloadSpiderSpider(scrapy.Spider):
         report_id = response.meta['report_id']
         doc_source_url = response.meta['doc_source_url']
         doc_type = response.meta['doc_type']
-        with open('X:/data/OPDCMS/hongkong/' + report_id + '.' + doc_type, 'wb') as wf:
+        disclosure_date = response.meta['disclosure_date']
+        file_name = report_id + '.' + doc_type
+        year = disclosure_date.year
+        with open('W:/hkg/' + str(year) + '/' + file_name, 'wb') as wf:
             wf.write(response.body)
             wf.close()
-        doc_local_path = 'X:/data/OPDCMS/hongkong/' + str(report_id) + '.' + str(doc_type)
+        doc_local_path = '/nas2_volume3/hkg/' + str(year) + '/' + file_name
         print('已成功下载' + report_id)
+        self.logger.info('已成功下载 %s...', report_id)
         item = HongKongFileItem()
         item['is_downloaded'] = '1'
         item['doc_local_path'] = doc_local_path
@@ -94,6 +90,7 @@ class HkexFileDownloadSpiderSpider(scrapy.Spider):
         request = failure.request
         report_id = request.meta['report_id']
         print('未成功下载' + report_id)
+        self.logger.info('未成功下载 %s...', report_id)
         # if 'item' in request.meta:  # 未正确处理的报表
         #     item = request.meta['item']
         #     item['is_downloaded'] = False

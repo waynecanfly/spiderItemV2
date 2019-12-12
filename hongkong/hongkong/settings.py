@@ -8,11 +8,23 @@
 #     https://doc.scrapy.org/en/latest/topics/settings.html
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
+import logging
+import os
+import time
 
 BOT_NAME = 'hongkong'
 
 SPIDER_MODULES = ['hongkong.spiders']
 NEWSPIDER_MODULE = 'hongkong.spiders'
+
+# Logging options
+LOG_DATE, LOG_TIME = time.strftime('%Y-%m-%d %H-%M').split()
+# 获取当前项目路径
+root_path = os.path.abspath(os.path.dirname(__file__)).split('spiderItemV2')[0]
+log_path = str(root_path) + '/spiderItemV2/logs/'
+LOG_FILE = str(log_path) + '/hkg/{}_{}.log'.format(LOG_DATE, LOG_TIME)
+LOG_LEVEL = logging.INFO
+
 API_URL = 'http://http.tiqu.alicdns.com/getip3?num=1&type=1&pro=&city=0&yys=0&port=1&time=1&ts=0&ys=0&cs=0&lb=1&sb=0&pb=4&mr=1&regions='
 #
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -119,5 +131,4 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-FILES_STORE = 'X:/data/OPDCMS/hongkong/'
-LOG_LEVEL = 'ERROR'
+# FILES_STORE = 'X:/data/OPDCMS/hongkong/'

@@ -36,7 +36,7 @@ class DocumentFileDownloadSpiderSpider(scrapy.Spider):
 
     def parse(self, response):
         report_id = response.meta['report_id']
-        with open('X:/data/html/hongkong/' + report_id + '.pdf','wb') as wf:
+        with open('W:/hkg/html/hongkong/' + report_id + '.pdf', 'wb') as wf:
             wf.write(response.body)
             wf.close()
         doc_local_path = 'X:/data/html/hongkong/' + str(report_id) + '.pdf'
@@ -51,4 +51,5 @@ class DocumentFileDownloadSpiderSpider(scrapy.Spider):
     def errback_scraping(self, failure):
         request = failure.request
         report_id = request.meta['report_id']
-        print('未成功下载' + report_id)
+        self.logger.info('未成功下载 %s...', report_id)
+        # print('未成功下载' + report_id)

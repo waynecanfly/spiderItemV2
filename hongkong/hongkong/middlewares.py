@@ -29,6 +29,7 @@ class RandomUserAgentMiddleware(object):
         if ua:
             request.headers.setdefault('User-Agent', ua)
 
+
 class ProxyMiddleware(object):
 
     @classmethod

@@ -47,13 +47,13 @@ class HkexOriginInfoUpdateSpider(scrapy.Spider):
                 'callback': callback
             })
 
-
     def parse_origin(self, response):
         # 清洗json数据
         callback_key = response.meta['callback']
         response_text = hongKongExtractData(response, callback_key, -1)
         jsobj = json.loads(response_text)
         company_origin_list = jsobj['data']['quote']
+        gmt_create = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
         issued_shares = company_origin_list['amt_os']
         industry = str(company_origin_list['hsic_ind_classification']) + '-' + str(
             company_origin_list['hsic_sub_sector_classification'])
@@ -74,26 +74,39 @@ class HkexOriginInfoUpdateSpider(scrapy.Spider):
         stock_code = company_origin_list['sym']
         company_name = company_origin_list['nm']
         company_short_name = company_origin_list['nm_s']
+        data_list = [
+            ('issued_shares', issued_shares),
+            ('industry', industry),
+            ('listing_date', listing_date),
+            ('financial_year_ends', financial_year_ends),
+            ('chairman', chairman),
+            ('principal_office', principal_office),
+            ('place_of_incorporation', place_of_incorporation),
+            ('listing_category', listing_category),
+            ('registrar', registrar),
+            ('isin', isin),
+            ('stock_code', stock_code),
+            ('company_name', company_name),
+            ('company_short_name', company_short_name),
+            # ('')
+        ]
         res = HKEXGetCompcodeBySymCode(self.cursor, 'company_data_source_complete20191010_copy1', stock_code)
+
         if res:
             company_code = res[0]
-            item = HongkongOriginInfoItem()
-            item['company_code'] = ('custom_code', company_code)
-            item['issued_shares'] = ('issued_shares', issued_shares)
-            item['industry'] = ('industry', industry)
-            item['listing_date'] = ('listing_date', listing_date)
-            item['financial_year_ends'] = ('financial_year_ends', financial_year_ends)
-            item['chairman'] = ('chairman', chairman)
-            item['principal_office'] = ('principal_office', principal_office)
-            item['place_of_incorporation'] = ('place_of_incorporation', place_of_incorporation)
-            item['listing_category'] = ('listing_category', listing_category)
-            item['registrar'] = ('registrar', registrar)
-            item['isin'] = ('isin', isin)
-            item['stock_code'] = ('stock_code', stock_code)
-            item['company_name'] = ('company_name', company_name)
-            item['company_short_name'] = ('company_short_name', company_short_name)
+            security_code = stock_code
+            for data in data_list:
+                item = HongkongOriginInfoItem()
+                item['country_code'] = 'HKG'
+                item['exchange_market_code'] = 'HKEX'
+                item['security_code'] = security_code
+                item['company_code'] = company_code
+                item['display_label'] = data[0]
+                item['information'] = data[1]
+                item['gmt_create'] = gmt_create
+                item['user_create'] = 'cf'
 
-        yield item
+                yield item
 
 
     def parse(self, response):

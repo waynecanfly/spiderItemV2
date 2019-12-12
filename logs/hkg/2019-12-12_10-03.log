@@ -1,0 +1,57 @@
+2019-12-12 10:03:55 [scrapy.utils.log] INFO: Scrapy 1.6.0 started (bot: hongkong)
+2019-12-12 10:03:55 [scrapy.utils.log] INFO: Versions: lxml 4.3.4.0, libxml2 2.9.5, cssselect 1.0.3, parsel 1.5.1, w3lib 1.20.0, Twisted 19.2.1, Python 3.6.4 (v3.6.4:d48eceb, Dec 19 2017, 06:54:40) [MSC v.1900 64 bit (AMD64)], pyOpenSSL 19.0.0 (OpenSSL 1.1.1c  28 May 2019), cryptography 2.7, Platform Windows-10-10.0.18362-SP0
+2019-12-12 10:03:55 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'hongkong', 'COOKIES_ENABLED': False, 'DOWNLOAD_DELAY': 0.25, 'LOG_FILE': 'D:\\Collection_SpiderItem\\/spiderItemV2/logs//hkg/2019-12-12_10-03.log', 'LOG_LEVEL': 20, 'NEWSPIDER_MODULE': 'hongkong.spiders', 'SPIDER_MODULES': ['hongkong.spiders']}
+2019-12-12 10:03:55 [scrapy.extensions.telnet] INFO: Telnet Password: c1ba8465dd4f7ee4
+2019-12-12 10:03:55 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2019-12-12 10:03:56 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'hongkong.middlewares.ExceptionMiddleware',
+ 'hongkong.middlewares.RandomUserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2019-12-12 10:03:56 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2019-12-12 10:03:56 [scrapy.middleware] INFO: Enabled item pipelines:
+['hongkong.pipelines.HongkongPipeline']
+2019-12-12 10:03:56 [scrapy.core.engine] INFO: Spider opened
+2019-12-12 10:03:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-12-12 10:03:56 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2019-12-12 10:03:56 [scrapy.core.downloader.handlers.http11] WARNING: Expected response size (58808982) larger than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2011/0329/ltn20110329458.pdf>.
+2019-12-12 10:03:57 [scrapy.core.downloader.handlers.http11] WARNING: Expected response size (61969850) larger than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2009/0319/ltn20090319097.pdf>.
+2019-12-12 10:03:57 [scrapy.core.downloader.handlers.http11] WARNING: Expected response size (108428406) larger than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2012/0320/ltn20120320390.pdf>.
+2019-12-12 10:04:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-12-12 10:05:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-12-12 10:06:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-12-12 10:06:56 [scrapy.core.downloader.handlers.http11] WARNING: Expected response size (108428406) larger than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2012/0320/ltn20120320390.pdf>.
+2019-12-12 10:06:57 [scrapy.core.downloader.handlers.http11] WARNING: Expected response size (58808982) larger than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2011/0329/ltn20110329458.pdf>.
+2019-12-12 10:06:57 [scrapy.core.downloader.handlers.http11] WARNING: Expected response size (61969850) larger than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2009/0319/ltn20090319097.pdf>.
+2019-12-12 10:07:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-12-12 10:08:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-12-12 10:09:26 [scrapy.core.downloader.handlers.http11] WARNING: Received more bytes than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2009/0319/ltn20090319097.pdf>.
+2019-12-12 10:09:52 [scrapy.core.downloader.handlers.http11] WARNING: Received more bytes than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2011/0329/ltn20110329458.pdf>.
+2019-12-12 10:09:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-12-12 10:09:56 [scrapy.core.downloader.handlers.http11] WARNING: Expected response size (108428406) larger than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2012/0320/ltn20120320390.pdf>.
+2019-12-12 10:09:57 [scrapy.core.downloader.handlers.http11] WARNING: Expected response size (58808982) larger than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2011/0329/ltn20110329458.pdf>.
+2019-12-12 10:09:57 [scrapy.core.downloader.handlers.http11] WARNING: Expected response size (61969850) larger than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2009/0319/ltn20090319097.pdf>.
+2019-12-12 10:10:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-12-12 10:11:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-12-12 10:12:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-12-12 10:12:56 [scrapy.core.downloader.handlers.http11] WARNING: Expected response size (108428406) larger than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2012/0320/ltn20120320390.pdf>.
+2019-12-12 10:12:57 [scrapy.core.downloader.handlers.http11] WARNING: Expected response size (58808982) larger than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2011/0329/ltn20110329458.pdf>.
+2019-12-12 10:12:57 [scrapy.core.downloader.handlers.http11] WARNING: Expected response size (61969850) larger than download warn size (33554432) in request <GET https://www1.hkexnews.hk/listedco/listconews/sehk/2009/0319/ltn20090319097.pdf>.
+2019-12-12 10:13:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-12-12 10:14:56 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)

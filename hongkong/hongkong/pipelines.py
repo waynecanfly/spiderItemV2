@@ -14,6 +14,7 @@ from samples.base_rule import toInsert, removeRepeatByComNm
 from hongkong.items import HongKongCompItem, HongkongOriginInfoItem, HongKongFileItem, HongKongHtmlFileItem, \
     HongKongPresetItem, HongKongSecurityItem, HongKongMarketItem, HongKongDelistedCompanyItem
 
+# from common.utils import get_table_namer
 # from common.utils import get_table_name
 
 
@@ -47,6 +48,11 @@ class HongkongPipeline(object):
         #                 ]
         #             )
         #             self.conn.commit()
+        if spider.name == 'HKEX_origin_info_update':
+            tablename = get_table_name()
+            if isinstance(item, HongKongCompItem):
+
+                toInsert(self.conn, self.cursor, tablename, item)
         if spider.name == 'HKEX_data_source_list_insert':
             if isinstance(item, HongKongCompItem):
 
@@ -76,7 +82,7 @@ class HongkongPipeline(object):
                 is_downloaded = item['is_downloaded']
 
                 # print(doc_local_path)
-                sql = "UPDATE financial_origin_began_complete20191101_copy1_copy1 SET is_downloaded='{is_downloaded}'," \
+                sql = "UPDATE financial_origin_began_complete_hkg2019124_copy2 SET is_downloaded='{is_downloaded}'," \
                       "doc_local_path='{doc_local_path}' where report_id='{report_id}'".format(
                     is_downloaded=is_downloaded,
                     doc_local_path=doc_local_path,

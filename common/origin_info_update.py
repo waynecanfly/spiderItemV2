@@ -7,6 +7,7 @@ import time
 
 import pymysql
 
+from common.compare_values import CompanyValues
 from common.utils import read_file, alter_file, get_file_path, \
     get_hongkong_spider_path, get_table_name, get_table_date, get_china_sse_spider_path, get_china_szse_spider_path
 
@@ -64,6 +65,7 @@ def schedulingHongkongSpiders():
     os.chdir(HK_PATH)
     os.system("cd scrapy crawl HKEX_origin_info_update")
 
+
 def schedulingChinaSpiders():
     SSE_PATH = get_china_sse_spider_path()
     SZSE_PATH = get_china_szse_spider_path()
@@ -83,6 +85,7 @@ def schedulingSpiders():
         t = threading.Thread(target=spider)
         t.start()
 
+
 def dropOverDueTable():
     # 获取当前时间
     today = datetime.datetime.now()
@@ -93,7 +96,7 @@ def dropOverDueTable():
     tablename = 'company_origin_info_temporary_' + str(re_date)
     DROPTABLE_SQL = "drop table if exists {tablename}".format(tablename=tablename)
     cursor.execute(DROPTABLE_SQL)
-    print('删除表：'+ tablename)
+    print('删除表：' + tablename)
 
 
 
@@ -112,7 +115,9 @@ if __name__ == '__main__':
     # 2、调度爬虫，获取数据
     schedulingSpiders()
 
-
+    # 3、数据更新
+    keys = CompanyValues()
+    keys.lingResult()
 
 
 

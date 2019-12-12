@@ -59,7 +59,7 @@ class HongkongallSpider(scrapy.Spider):
         for compinfo in comp_list:
             stock_code = compinfo['sym']
             # 判断是否为新公司，即判断stock_code在当前数据库中对应的security_type中是否存在
-            result = HKEXIsNewCompany(stock_code, 'company_data_source_complete20191010_copy1', security_type)
+            result = HKEXIsNewCompany(stock_code, 'company_base_info', security_type)
             if not result:
 
                 custom_code = read_file('D:/Collection_SpiderItem/spiderItemV2/hongkong/hongkong/custom_code.txt')

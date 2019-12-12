@@ -7,5 +7,7 @@ marked_info_label = {
     'market_type': ['market'],
     'security_type': ['security_type'],
     'isin': ['isin'],
-    'listing_date': ['listing_date']
+    'listing_date': ['listing_date'],
+    'place_of_incorporation': ['place_of_incorporation'],
+    'principal_office': ['principal_office']
 }

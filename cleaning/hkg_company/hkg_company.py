@@ -30,6 +30,7 @@ def get_security_info():
 
     return splider_security_box
 
+
 def get_db_raw_info():
     raw_info_map = {}
     aim_label_box = []
@@ -83,8 +84,6 @@ def get_stander_industry_map():
 def gen_other_company_info(base_info_company_box):
     raw_info_map = get_db_raw_info()
     stander_industry_map = get_stander_industry_map()
-    unlisted_status_info = get_unlisted_status()
-    security_box = []
 
     for company in base_info_company_box:
         try:
@@ -102,6 +101,12 @@ def gen_other_company_info(base_info_company_box):
                 elif label in marked_info_label['isin']:
                     date_list = raw_info_map[company.company_code][label].keys()
                     company.isin = raw_info_map[company.company_code][label][max(date_list)]
+                elif label in marked_info_label['place_of_incorporation']:
+                    date_list = raw_info_map[company.company_code][label].keys()
+                    company.registered_address = raw_info_map[company.company_code][label][max(date_list)]
+                elif label in marked_info_label['principal_office']:
+                    date_list = raw_info_map[company.company_code][label].keys()
+                    company.office_address = raw_info_map[company.company_code][label][max(date_list)]
                 elif label in marked_info_label['industry']:
                     date_list = raw_info_map[company.company_code][label].keys()
                     original_industry = raw_info_map[company.company_code][label][max(date_list)]
@@ -215,12 +220,13 @@ def gen_insert_value_box(new_company_box, new_security_box):
     company_values_box = []
     security_value_box = []
     for new_c in new_company_box:
-        company_value = """("{company_code}", "{unique_code}", "{name_en}", "{company_short_name}", "{original_industry_describe}", "{opd_sector_code}", "{opd_industry_code}", "{gics_sector_code}", "{gics_industry_group_code}",
-        "{country_code_listed}", "{country_code_origin}", "{isin}", "{website_url}", {gmt_create}, "{user_create}")""".format(
+        company_value = """("{company_code}", "{unique_code}", "{name_en}", "{company_short_name}", "{security_code}", "{original_industry_describe}", "{opd_sector_code}", "{opd_industry_code}", "{gics_sector_code}", "{gics_industry_group_code}",
+        "{country_code_listed}", "{country_code_origin}", "{isin}", "{exchange_market_code}","{website_url}","{registered_address}", "{office_address}", {gmt_create}, "{user_create}")""".format(
             company_code=new_c.company_code,
             unique_code=new_c.unique_code,
             name_en=new_c.name_en,
             company_short_name=new_c.company_short_name,
+            security_code=new_c.security_code,
             original_industry_describe=new_c.original_industry_describe,
             opd_sector_code=new_c.opd_sector_code,
             opd_industry_code=new_c.opd_industry_code,
@@ -229,7 +235,10 @@ def gen_insert_value_box(new_company_box, new_security_box):
             country_code_listed=new_c.country_code,
             country_code_origin=new_c.country_code,
             isin=new_c.isin,
+            exchange_market_code=new_c.exchange_market_code,
             website_url=new_c.website_url,
+            registered_address=new_c.registered_address,
+            office_address=new_c.office_address,
             gmt_create='now()',
             user_create='program_auto'
         )
@@ -259,24 +268,20 @@ def gen_insert_value_box(new_company_box, new_security_box):
 
 
 def insert_new_to_db(new_company_box, new_security_box):
-    if len(new_company_box)==0:
+    if len(new_company_box) == 0:
         return True
 
     company_values_box, security_values_box = gen_insert_value_box(new_company_box, new_security_box)
 
-    # company_insert_sql = "INSERT INTO company_hkg(company_code, unique_code, name_en, company_short_name, original_industry_describe, opd_sector_code, opd_industry_code, gics_sector_code, gics_industry_group_code, country_code_listed, country_code_origin, isin, website_url, gmt_create, user_create) VALUES {values}"
-    # company_insert_sql = company_insert_sql.format(values=', '.join(company_values_box))
-    # print(company_insert_sql)
-    # dbtools.query_common(company_insert_sql)
+    company_insert_sql = "INSERT INTO company_hkg(company_code, unique_code, name_en, company_short_name, security_code, original_industry_describe, opd_sector_code, opd_industry_code, gics_sector_code, gics_industry_group_code, country_code_listed, country_code_origin, isin,exchange_market_code, website_url,registered_address, office_address, gmt_create, user_create) VALUES {values}"
+    company_insert_sql = company_insert_sql.format(values=', '.join(company_values_box))
+    print(company_insert_sql)
+    dbtools.query_common(company_insert_sql)
 
-    security_insert_sql = "INSERT INTO security_hkg(company_code, unique_code, name_origin, market_type, security_code, security_type, country_code_listed, exchange_market_code, listing_date, status, delist_date, user_create, gmt_create) VALUES {values}"
-    security_insert_sql = security_insert_sql.format(values=', '.join(security_values_box))
-    print(security_insert_sql)
-    dbtools.query_common(security_insert_sql)
-
-
-
-
+    # security_insert_sql = "INSERT INTO security_hkg(company_code, unique_code, name_origin, market_type, security_code, security_type, country_code_listed, exchange_market_code, listing_date, status, delist_date, user_create, gmt_create) VALUES {values}"
+    # security_insert_sql = security_insert_sql.format(values=', '.join(security_values_box))
+    # print(security_insert_sql)
+    # dbtools.query_common(security_insert_sql)
 
 
 def process():
@@ -292,15 +297,6 @@ def process():
 
     # # 入库
     insert_new_to_db(new_download_company_box, new_download_security_box)
-
-
-
-
-
-
-
-
-
 
 
 if __name__ == '__main__':

@@ -1,0 +1,39 @@
+2019-12-12 09:58:54 [scrapy.utils.log] INFO: Scrapy 1.6.0 started (bot: hongkong)
+2019-12-12 09:58:54 [scrapy.utils.log] INFO: Versions: lxml 4.3.4.0, libxml2 2.9.5, cssselect 1.0.3, parsel 1.5.1, w3lib 1.20.0, Twisted 19.2.1, Python 3.6.4 (v3.6.4:d48eceb, Dec 19 2017, 06:54:40) [MSC v.1900 64 bit (AMD64)], pyOpenSSL 19.0.0 (OpenSSL 1.1.1c  28 May 2019), cryptography 2.7, Platform Windows-10-10.0.18362-SP0
+2019-12-12 09:58:54 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'hongkong', 'COOKIES_ENABLED': False, 'DOWNLOAD_DELAY': 0.25, 'LOG_FILE': 'D:\\Collection_SpiderItem\\/spiderItemV2/logs//hkg/2019-12-12_09-58.log', 'LOG_LEVEL': 20, 'NEWSPIDER_MODULE': 'hongkong.spiders', 'SPIDER_MODULES': ['hongkong.spiders']}
+2019-12-12 09:58:54 [scrapy.extensions.telnet] INFO: Telnet Password: f4a864e5175128de
+2019-12-12 09:58:54 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2019-12-12 09:58:54 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'hongkong.middlewares.ExceptionMiddleware',
+ 'hongkong.middlewares.RandomUserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2019-12-12 09:58:54 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2019-12-12 09:58:54 [scrapy.middleware] INFO: Enabled item pipelines:
+['hongkong.pipelines.HongkongPipeline']
+2019-12-12 09:58:54 [scrapy.core.engine] INFO: Spider opened
+2019-12-12 09:58:54 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-12-12 09:58:54 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2019-12-12 09:58:54 [scrapy.core.engine] INFO: Closing spider (finished)
+2019-12-12 09:58:54 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2019, 12, 12, 1, 58, 54, 778312),
+ 'log_count/INFO': 9,
+ 'start_time': datetime.datetime(2019, 12, 12, 1, 58, 54, 673492)}
+2019-12-12 09:58:54 [scrapy.core.engine] INFO: Spider closed (finished)
